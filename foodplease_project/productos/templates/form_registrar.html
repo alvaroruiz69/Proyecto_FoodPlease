@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Formulario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/styles.css" rel="stylesheet">
+</head>
+<body class="form-registrar-background">
+
+    <div class="container text-center">
+        <h1>Formulario de Registro</h1>
+        <a href="/" class="back-button">&larr; Volver al Index</a>
+
+        {% if r %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h5>{{ r }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        {% if r2 %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5>{{ r2 }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        <form action="/insertar" method="post">
+            {% csrf_token %}
+            
+            <input type="text" name="txtnom" placeholder="Nombre de Producto" required class="form-control form-control-lg" />
+
+            <br/>
+            
+            <select name="cbomar" required class="form-select form-select-lg">
+                <option value="">Seleccione Marca</option>
+                <option value="A cuenta">A cuenta</option>
+                <option value="Jumbo">Jumbo</option>
+                <option value="Lider">Lider</option>
+            </select>
+
+            <br/>
+
+            <input type="number" name="txtpre" min="1" max="9999999" placeholder="Precio de Producto" required class="form-control form-control-lg" />
+            
+            <br/>
+            
+            <input type="submit" value="Guardar Datos" class="btn btn-primary btn-lg" style="width:100%"/>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
